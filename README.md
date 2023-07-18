@@ -35,7 +35,8 @@ the following command will :
 **NOTE**: Make sure the build is index under Xray Index Resources. 
 
 
-![Scan Result](<Screenshot 2023-07-18 at 10.09.30 AM.png>)
+![Scan Result](<scan-result.png>)
+
 
 
 
