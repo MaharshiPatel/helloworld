@@ -1,0 +1,32 @@
+{
+  "name": "cpp_build",
+  "number": "1",
+  "agent": {
+    "name": "jfrog-cli-go",
+    "version": "2.43.1"
+  },
+  "buildAgent": {
+    "name": "GENERIC",
+    "version": "2.43.1"
+  },
+  "started": "2023-07-18T09:09:29.304-0700",
+  "artifactoryPrincipal": "maharship",
+  "modules": [
+    {
+      "id": "helloworld",
+      "type": "cpp",
+      "dependencies": [
+        {
+          "sha1": "bdec59a0d37c2d479b47a518e92083f5f5a86596",
+          "id": "poco:1.9.0",
+          "type": "cpp"
+        },
+        {
+          "sha1": "9458784bbb7eb28b44881812f4aefa9c33d6224f",
+          "id": "sqlite3:299.1.0.8",
+          "type": "cpp"
+        }
+      ]
+    }
+  ]
+}
