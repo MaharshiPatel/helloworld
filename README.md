@@ -27,7 +27,7 @@ the following command will :
     jq '.modules[] += {"type":"cpp"}' build_info.json |\
     jq '.modules[].dependencies[] += {"type":"cpp"}' |\
     jq '(.modules[].dependencies[] | select(.id == "poco" ) | .id)    |= "poco:1.9.0.0"' |\
-    jq '(.modules[].dependencies[] | select(.id == "poco" ) | .id)    |= "sqlite3:299.1.0.8"' > build_info_xray.json
+    jq '(.modules[].dependencies[] | select(.id == "sqlite3" ) | .id)    |= "sqlite3:299.1.0.8"' > build_info_xray.json
     ```
 
 - RUN, `jf rt curl -XPUT /api/build -H "Content-Type: application/json" -T build_info_xray.json` This will upload build info. 
@@ -42,6 +42,6 @@ the following command will :
 
 References:
 - [Document for scanning C/C++ build](https://jfrog.com/help/r/jfrog-artifactory-documentation/conan-and-c/c-support-in-xray)
-- Used [this](https://www.dll-files.com/) to find out SHAs
+- Used [dll-files](https://www.dll-files.com/) to find out SHAs
 
 
