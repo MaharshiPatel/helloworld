@@ -13,7 +13,7 @@
 
 ## For C/C++ Project scan
 - RUN `jf rt bp --dry-run=true  {{NAME_OF_BUILD}} 1 > build_info.json`. This will generate Build info and save it as JSON file.
-    - For myself, `jf rt bp --dry-run=true  cpp_build 1 > build_info.json`
+    - For myself, `jf rt bp --dry-run=true  helloworld-cpp 1 > build_info.json`
 
 
 **NOTE**: Make sure that we added `"modules": []` in your `build_info.json` before run below snippet. 
