@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+
+    tools {
+        jfrog 'jfrog-cli'
+    }
+
+    environment {
+        ARTIFACTORY_URL = 'https://soleng.jfrog.io'
+        ARTIFACTORY_REPO = 'alpha-generic-local' 
+        BUILD_NAME = 'helloworld-cpp-build'
+        BUILD_NUMBER = "${BUILD_ID}"
+    }
+
+    stages {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/MaharshiPatel/helloworld.git'
+            }
+        }
+
+        stage('Check Connection') {
+            steps {
+                jf 'rt ping'
+                sh """
+                # Example of uploading files to Artifactory
+                pwd
+                ls -la
+                """
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                    g++ helloworld.cpp -o helloworld
+                '''
+            }
+        }
+
+        stage('Publish to Artifactory') {
+            steps {
+                sh '''
+                    jf rt u "helloworld" "/$ARTIFACTORY_REPO/helloworld/${BUILD_NUMBER}/" \
+                        --build-name=$BUILD_NAME \
+                        --build-number=$BUILD_NUMBER
+                    jf rt bag $BUILD_NAME $BUILD_NUMBER
+                    jf rt bce $BUILD_NAME $BUILD_NUMBER
+                    jf rt bp $BUILD_NAME $BUILD_NUMBER
+                '''
+            }
+        }
+    }
+}
