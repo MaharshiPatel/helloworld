@@ -1,5 +1,5 @@
 {
-  "name": "cpp_build",
+  "name": "helloworld-cpp",
   "number": "1",
   "agent": {
     "name": "jfrog-cli-go",
